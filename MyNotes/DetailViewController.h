@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Note;
+
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (nonatomic, strong) Note *note;
+@property (nonatomic, copy) void (^completionBlock)(void);
+@property (nonatomic, getter=isNewNote) BOOL newNote;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

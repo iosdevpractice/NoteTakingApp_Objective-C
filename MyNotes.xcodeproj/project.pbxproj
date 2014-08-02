@@ -22,6 +22,8 @@
 		B8CC8D011986D604001762FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CC8CE01986D604001762FC /* UIKit.framework */; };
 		B8CC8D091986D604001762FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8CC8D071986D604001762FC /* InfoPlist.strings */; };
 		B8CC8D0B1986D604001762FC /* MyNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8D0A1986D604001762FC /* MyNotesTests.m */; };
+		B8CC8D161986D9E7001762FC /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8D151986D9E7001762FC /* Note.m */; };
+		B8CC8D19198B1901001762FC /* NoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8D18198B1901001762FC /* NoteStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		B8CC8D061986D604001762FC /* MyNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyNotesTests-Info.plist"; sourceTree = "<group>"; };
 		B8CC8D081986D604001762FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B8CC8D0A1986D604001762FC /* MyNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNotesTests.m; sourceTree = "<group>"; };
+		B8CC8D141986D9E7001762FC /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		B8CC8D151986D9E7001762FC /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		B8CC8D17198B1901001762FC /* NoteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteStore.h; sourceTree = "<group>"; };
+		B8CC8D18198B1901001762FC /* NoteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 				B8CC8CF21986D604001762FC /* MasterViewController.m */,
 				B8CC8CF41986D604001762FC /* DetailViewController.h */,
 				B8CC8CF51986D604001762FC /* DetailViewController.m */,
+				B8CC8D141986D9E7001762FC /* Note.h */,
+				B8CC8D151986D9E7001762FC /* Note.m */,
+				B8CC8D17198B1901001762FC /* NoteStore.h */,
+				B8CC8D18198B1901001762FC /* NoteStore.m */,
 				B8CC8CF71986D604001762FC /* Images.xcassets */,
 				B8CC8CE31986D604001762FC /* Supporting Files */,
 			);
@@ -254,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CC8D161986D9E7001762FC /* Note.m in Sources */,
 				B8CC8CED1986D604001762FC /* AppDelegate.m in Sources */,
 				B8CC8CF31986D604001762FC /* MasterViewController.m in Sources */,
+				B8CC8D19198B1901001762FC /* NoteStore.m in Sources */,
 				B8CC8CE91986D604001762FC /* main.m in Sources */,
 				B8CC8CF61986D604001762FC /* DetailViewController.m in Sources */,
 			);
@@ -462,6 +474,7 @@
 				B8CC8D101986D604001762FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8CC8D111986D604001762FC /* Build configuration list for PBXNativeTarget "MyNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +483,7 @@
 				B8CC8D131986D604001762FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

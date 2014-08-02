@@ -7,45 +7,81 @@
 //
 
 #import "DetailViewController.h"
+#import "Note.h"
 
 @interface DetailViewController ()
-- (void)configureView;
+
+@property (weak, nonatomic) IBOutlet UILabel *modificationDateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+
 @end
 
 @implementation DetailViewController
 
-#pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
-}
+#pragma mark - view lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+	
+    if (!self.isNewNote) {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    
+    if (self.note) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setDateStyle:NSDateFormatterLongStyle];
+        
+        self.modificationDateLabel.text =
+        [formatter stringFromDate:self.note.modificationDate];
+        
+        self.contentTextView.text = self.note.content;
+    }
+    
+    if (self.isNewNote) {
+        [self.contentTextView becomeFirstResponder];
+    }
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (!self.isNewNote) {
+        if (![self.note.content isEqualToString:self.contentTextView.text]) {
+            self.note.content = self.contentTextView.text;
+        }
+    }
+}
+
+#pragma mark - actions
+
+- (IBAction)doneTapped:(UIBarButtonItem *)sender
+{
+    self.note.content = self.contentTextView.text;
+    
+    if (self.completionBlock) {
+        self.completionBlock();
+    }
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:nil];
+}
+
+- (IBAction)cancelTapped:(UIBarButtonItem *)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:nil];
 }
 
 @end
