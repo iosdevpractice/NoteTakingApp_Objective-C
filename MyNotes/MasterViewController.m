@@ -106,6 +106,10 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Note *note = self.notes[indexPath.row];
         [[segue destinationViewController] setNote:note];
+        self.navigationItem.backBarButtonItem =
+        [[UIBarButtonItem alloc] initWithTitle:@"Notes"
+                                         style:UIBarButtonItemStylePlain
+                                        target:nil action:nil];
     
     } else if ([[segue identifier] isEqualToString:@"addNote"]) {
     
